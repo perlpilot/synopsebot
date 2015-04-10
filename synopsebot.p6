@@ -27,12 +27,11 @@ my $bot = Net::IRC::Bot.new(
     port        => 6667,
     channels    => ["#duff"],
     
-    nick        => "jsdbot",
-    username    => "jsdbot",
+    nick        => "synopsebot6",
+    username    => "synopsebot6",
     name        => "blame PerlJam",
 
     modules => ( SynopsesBot.new ),
-    :debug 
 );
 $bot.run();
 
