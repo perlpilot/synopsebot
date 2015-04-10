@@ -25,7 +25,7 @@ class SynopsesBot {
 my $bot = Net::IRC::Bot.new(
     server      => "irc.freenode.net",
     port        => 6667,
-    channels    => ["#duff"],
+    channels    => ["#perl6", "#moarvm"],
     
     nick        => "synopsebot6",
     username    => "synopsebot6",
