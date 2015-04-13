@@ -27,8 +27,8 @@ my $bot = Net::IRC::Bot.new(
     port        => 6667,
     channels    => ["#perl6", "#moarvm"],
     
-    nick        => "synopsebot6",
-    username    => "synopsebot6",
+    nick        => "synbot6",
+    username    => "synbot6",
     name        => "blame PerlJam",
 
     modules => ( SynopsesBot.new ),
