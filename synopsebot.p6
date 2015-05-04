@@ -16,7 +16,7 @@ class SynopsesBot {
             }
             when / '#' (\d ** 5..*) / {
                 return unless 18400 <= $0 <= 200000;
-                $e.msg("Link:  https://rt.perl.org/rt3//Public/Bug/Display.html?id=$0");
+                $e.msg("Link:  https://rt.perl.org/rt3/Public/Bug/Display.html?id=$0");
             }
         }
     }
