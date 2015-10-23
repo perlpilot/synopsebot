@@ -8,10 +8,14 @@ class SynopsesBot {
         say $e;
         given $e.what {
             when /botsnack/ { $e.msg("om nom nom") }
-            when m{ $<syn>=(S\d\d) [ '/' $<subsyn>=(\w+) ]? ':' [ $<line>=(\d+) | $<entry>=(\.?<[\w-]>+[\(\)]?) ] } {
+            when m{ $<syn>=(S\d\d) [ '/' $<subsyn>=(\w+) ]? ':' [ $<line>=(\d+) | $<entry>=(\.?<[\s\w-]>+[\(\)]?) ] } {
                 return if $<line>.defined && $<line> >= 9999;
                 my $syn = $<subsyn> ?? "$<syn>/$<subsyn>" !! $<syn>;
-                my $name = $<line> ?? "line_" ~ $<line> !! $<entry>;
+		my $entry = $<entry>;
+		$entry ~~ s/\s+'#'.*$//; 	# remove trailing comment
+		$entry.=trim;
+		$entry ~~ s:g/\s+/_/;		# turn spaces into underscore
+                my $name = $<line> ?? "line_" ~ $<line> !! $entry;
                 $e.msg("Link: http://design.perl6.org/$syn.html#$name");
             }
             when / '#' (\d ** 5..*) / {
