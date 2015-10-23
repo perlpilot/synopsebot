@@ -8,7 +8,7 @@ class SynopsesBot {
         say $e;
         given $e.what {
             when /botsnack/ { $e.msg("om nom nom") }
-            when m{ $<syn>=(S\d\d) [ '/' $<subsyn>=(\w+) ]? ':' [ $<line>=(\d+) | $<entry>=(\.?\w+[\(\)]?) ] } {
+            when m{ $<syn>=(S\d\d) [ '/' $<subsyn>=(\w+) ]? ':' [ $<line>=(\d+) | $<entry>=(\.?<[\w-]>+[\(\)]?) ] } {
                 return if $<line>.defined && $<line> >= 9999;
                 my $syn = $<subsyn> ?? "$<syn>/$<subsyn>" !! $<syn>;
                 my $name = $<line> ?? "line_" ~ $<line> !! $<entry>;
